@@ -1,3 +1,4 @@
 ---
 title: "My Website"
+output: html_document
 ---
