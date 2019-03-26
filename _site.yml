@@ -1,5 +1,4 @@
 name: "map"
-output_dir: "docs"
 navbar:
   title: "Maps"
   left:
