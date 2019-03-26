@@ -1,9 +1,9 @@
 name: "map"
 output_dir: "docs"
 navbar:
-  title: "Cars"
+  title: "Maps"
   left:
-  - text: "Home"
+  - text: "Bouldering"
    href: index.html
 output:
   html_document:
