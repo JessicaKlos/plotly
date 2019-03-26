@@ -1,9 +1,0 @@
-name: "my-website"
-output_dir: "."
-navbar:
-  title: "My Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Map1"
-      href: "bouldering_centres.html"
