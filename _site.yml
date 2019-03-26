@@ -4,7 +4,7 @@ navbar:
   title: "Maps"
   left:
   - text: "Bouldering"
-   href: index.html
+   href: docs/index.html
 output:
   html_document:
  theme: jekyll-theme-minimal
