@@ -1,11 +1,10 @@
 ---
-title: "website test"
+title: "Bouldering centres around Nuremberg"
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
-author: "Jessica Klos"
+ output_file=file.path(dirname(input_file), out_dir, 'bouldering_centres.html'))})
 date: "26 März 2019"
 output: html_document
 ---
@@ -15,7 +14,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(leaflet)
 ```
 
-## My map
 
 ```{r my_map, echo=FALSE}
 boulderIcon <- icons(
