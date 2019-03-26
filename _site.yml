@@ -3,6 +3,6 @@ navbar:
   title: "My Website"
   left:
     - text: "Home"
-      href: bouldering_centres.html
+      href: index.html
     - text: "About"
       href: bouldering_centres.html
