@@ -4,7 +4,7 @@ navbar:
   title: "Maps"
   left:
   - text: "Bouldering"
-   href: bouldering_centres.html
+    href: bouldering_centres.html
 output:
   html_document:
     theme: yeti
