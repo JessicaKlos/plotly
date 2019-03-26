@@ -3,8 +3,8 @@ output_dir: "docs"
 navbar:
   title: "Maps"
   left:
-  - text: "Bouldering"
-    href: bouldering_centres.html
+    - text: "Bouldering"
+      href: bouldering_centres.html
 output:
   html_document:
     theme: yeti
