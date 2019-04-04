@@ -1,0 +1,68 @@
+---
+title: "Week 3 Assignment"
+author: "Jessica Klos"
+date: "April 04, 2019"
+output: ioslides_presentation
+---
+
+## Data
+
+data downloaded from: [https://www.deutschlandinzahlen.de](https://www.deutschlandinzahlen.de)
+
+```{r, echo=FALSE,message=FALSE}
+library(plotly)
+library(tidyr)
+
+income_data <- read.csv(file = "c:/Seminare_Skripte/Coursera/Developing_Data_Products_mycode/plotly/week3_task/data/Haushaltseinkommen_je_Einwohner.csv")
+labor_data <- read.csv(file = "c:/Seminare_Skripte/Coursera/Developing_Data_Products_mycode/plotly/week3_task/data/Erwerbstaetige_in_Prozent_der_Bevoelkerung.csv")
+
+###prepare data
+income_data_long <- income_data %>% 
+  gather(year,income,-Bundesland)
+income_data_long$year <- as.integer(gsub(pattern = "X",replacement = "",income_data_long$year))
+
+labor_data_long <- labor_data %>% 
+  gather(year,labor_rate,-Bundesland)
+labor_data_long$year <- as.integer(gsub(pattern = "X",replacement = "",labor_data_long$year))
+
+all_data <- merge(x = income_data_long,y = labor_data_long,by = c("Bundesland","year"))
+
+east <- c("Berlin","Brandenburg","Mecklenburg-Vorpommern","Sachsen-Anhalt","Sachsen","Thüringen")
+west <- c("Baden-Württemberg","Bayern","Bremen","Deutschland","Hamburg","Hessen",                
+          "Niedersachsen","Nordrhein-Westfalen","Rheinland-Pfalz",       
+          "Saarland","Schleswig-Holstein")
+all_data$region <- ifelse(all_data$Bundesland %in% east,"East","West")
+all_data$region <- ifelse(all_data$Bundesland == "Deutschland","Germany",all_data$region)
+
+all_data$region <- factor(all_data$region,levels = c("Germany","West","East"))
+```
+
+```{r, echo=FALSE}
+summary(all_data)
+```
+
+## Plotly Plot
+
+The development of income and labor in German states <br>
+years 1995-2016
+
+```{r, echo=FALSE}
+all_data$hovertext <- with(all_data, paste0(Bundesland," (",year, ") <br> income: ", round(income,1)," EUR <br> labor rate: ",round(labor_rate,digits = 1),"%"))
+
+all_data %>%
+  plot_ly(
+    x = ~labor_rate, 
+    y = ~income, 
+    color = ~region, colors=c("black","#E69F00","#56B4E9"),
+    frame = ~year, 
+    text = ~hovertext, 
+    hoverinfo = "text",
+    type = 'scatter',
+    mode = 'line+markers'
+  ) %>%
+  layout(
+    xaxis = list(title = "labor force participation rate (% of population)",
+      type = "log"),
+    yaxis = list(title = "yearly disposable per capita income (EUR)")
+  )
+```
