@@ -27,8 +27,8 @@ labor_data_long$year <- as.integer(gsub(pattern = "X",replacement = "",labor_dat
 
 all_data <- merge(x = income_data_long,y = labor_data_long,by = c("Bundesland","year"))
 
-east <- c("Berlin","Brandenburg","Mecklenburg-Vorpommern","Sachsen-Anhalt","Sachsen","Thüringen")
-west <- c("Baden-Württemberg","Bayern","Bremen","Deutschland","Hamburg","Hessen",                
+east <- c("Berlin","Brandenburg","Mecklenburg-Vorpommern","Sachsen-Anhalt","Sachsen","Thueringen")
+west <- c("Baden-Wuerttemberg","Bayern","Bremen","Deutschland","Hamburg","Hessen",                
           "Niedersachsen","Nordrhein-Westfalen","Rheinland-Pfalz",       
           "Saarland","Schleswig-Holstein")
 all_data$region <- ifelse(all_data$Bundesland %in% east,"East","West")
